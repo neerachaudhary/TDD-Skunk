@@ -1,40 +1,40 @@
 
 public abstract class SkunkDomain {
 	
-	protected PairOfDice pod;
+	protected PairOfDice pairofdice;
 	protected String name;
-	protected SkunkController sk;
+	protected SkunkController controller;
 	
 	public SkunkDomain(String name, PairOfDice pod) {
 		this.name = name;
-		this.pod = pod;
-		sk = new SkunkController();
+		this.pairofdice = pod;
+		controller = new SkunkController();
 	}
 
 	public abstract boolean rollAgain();
 	
 	public boolean rollDice() {
-		pod.roll();
-		System.out.println(pod);
-		if(pod.hasOneOne() == false) {
-			sk.addToRoundTotal(pod.totalValue());
-			if(sk.getRoundTotal() + sk.getGameTotal() >= 100) {
+		pairofdice.roll();
+		System.out.println(pairofdice);
+		if(pairofdice.hasOneOne() == false) {
+			controller.addToRoundTotal(pairofdice.totalValue());
+			if(controller.getRoundTotal() + controller.getGameTotal() >= 100) {
 				return false;
 			}
-		} else if(pod.hasTwoOnes() == true) {
+		} else if(pairofdice.hasTwoOnes() == true) {
 			System.out.println("You rolled two ones.");
-			sk.resetGameTotal();
+			controller.resetGameTotal();
 			return false;
 		} else {
 			System.out.println("You rolled a one.");
-			sk.resetRoundTotal();
+			controller.resetRoundTotal();
 			return false;
 		}
 		return true;
 	}
 	
 	public boolean isWinner() {
-		if(sk.getGameTotal() >= 100) {
+		if(controller.getGameTotal() >= 100) {
 			return true;
 		}
 		return false;
@@ -45,11 +45,11 @@ public abstract class SkunkDomain {
 	}
 	
 	public void endRound() {
-		sk.addToGameTotal();
+		controller.addToGameTotal();
 	}
 	
 	public int getGameTotal() {
-		return sk.getGameTotal();
+		return controller.getGameTotal();
 	}
 	
 }

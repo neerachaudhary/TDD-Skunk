@@ -10,8 +10,8 @@ public class Die {
 	}
 	
 	public void roll() {
-		Random r = new Random();
-		value = r.nextInt(6) + 1;
+		Random random = new Random();
+		value = random.nextInt(6) + 1;
 	}
 	
 	public int getValue() {
@@ -26,9 +26,9 @@ public class Die {
 	
 	
 	public static void main(String[] args) {
-		Die d = new Die();
-		d.roll();
-		String thedie = d.toString();
+		Die die = new Die();
+		die.roll();
+		String thedie = die.toString();
 		System.out.println(thedie);
 	}
 	

@@ -7,7 +7,7 @@ public class NextPlayer extends CurrentPlayer {
 	
 	@Override
 	public boolean rollAgain() {
-		if(sk.getRoundTotal() < 20) {
+		if(controller.getRoundTotal() < 20) {
 			return true;
 		}
 		return false;

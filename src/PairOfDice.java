@@ -1,39 +1,39 @@
 
 public class PairOfDice {
-	Die d1;
-	Die d2;
+	Die die1;
+	Die die2;
 	
 	public PairOfDice() {
-		d1 = new Die();
-		d2 = new Die();
+		die1 = new Die();
+		die2 = new Die();
 	}
 	
 	public void roll() {
-		d1.roll();
-		d2.roll();
+		die1.roll();
+		die2.roll();
 	}
 	
 	public boolean hasTwoOnes() {
-		if(d1.getValue() == 1 && d2.getValue() == 1) {
+		if(die1.getValue() == 1 && die2.getValue() == 1) {
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean hasOneOne() {
-		if(d1.getValue() == 1 || d2.getValue() == 1) {
+		if(die1.getValue() == 1 || die2.getValue() == 1) {
 			return true;
 		}
 		return false;
 	}
 	
 	public int totalValue() {
-		return (d1.getValue() + d2.getValue());
+		return (die1.getValue() + die2.getValue());
 	}
 	
 	public String toString() {
-		String d1string = d1.toString();
-		String d2string = d2.toString();
+		String d1string = die1.toString();
+		String d2string = die2.toString();
 		return d1string + "\n" + d2string;
 	}
 	

@@ -21,13 +21,12 @@ public class CurrentPlayer extends SkunkDomain {
 		if(response.equals("y")) {
 			return true;
 		}
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	public static void main(String[] args) {
-		CurrentPlayer hp = new CurrentPlayer("Bob", new PairOfDice());
-		System.out.println(hp.rollAgain());
+		CurrentPlayer currentplayer = new CurrentPlayer("Bob", new PairOfDice());
+		System.out.println(currentplayer.rollAgain());
 	}
 	
 
