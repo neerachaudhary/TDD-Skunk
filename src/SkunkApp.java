@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class SkunkApp {
 
-	private SkunkDomain p1;
-	private SkunkDomain p2;
+	private SkunkDomain player1;
+	private SkunkDomain player2;
 	private Scanner stdin;
 	
 	public SkunkApp() {
@@ -17,21 +17,21 @@ public class SkunkApp {
 			i = stdin.nextInt();
 		}
 		PairOfDice pod = new PairOfDice();
-		p1 = new CurrentPlayer("Player 1", pod);
+		player1 = new CurrentPlayer("Player 1", pod);
 		if(i == 2) {
-			p2 = new CurrentPlayer("Player 2", pod);
+			player2 = new CurrentPlayer("Player 2", pod);
 		} else {
-			p2 = new NextPlayer("Player 2", pod);
+			player2 = new NextPlayer("Player 2", pod);
 		}
 		
 	}
 	
 	public void play() {
 		
-		SkunkDomain curplayer = p1;
+		SkunkDomain curplayer = player1;
 		boolean result = false, again = false;
 		
-		while(p1.isWinner() == false && p2.isWinner() == false) {
+		while(player1.isWinner() == false && player2.isWinner() == false) {
 			result = curplayer.rollDice();
 			if(result == true) {
 				again = curplayer.rollAgain();
@@ -52,17 +52,17 @@ public class SkunkApp {
 			if(!curplayer.isWinner()) {
 				System.out.println("Switching players");
 			}
-			if(curplayer == p1) {
-				curplayer = p2;
+			if(curplayer == player1) {
+				curplayer = player2;
 			} else {
-				curplayer = p1;
+				curplayer = player1;
 			}	
 		}
 		
-		if(p1.isWinner()) {
-			System.out.println(p1.getName() + " wins!");
+		if(player1.isWinner()) {
+			System.out.println(player1.getName() + " wins!");
 		} else {
-			System.out.println(p2.getName() + " wins!");
+			System.out.println(player2.getName() + " wins!");
 		}
 	}
 	
