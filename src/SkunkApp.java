@@ -8,14 +8,16 @@ public class SkunkApp {
 	private Scanner stdin;
 	
 	public SkunkApp() {
-		
+		System.out.println("Welcome to Skunk app");
 		stdin = new Scanner(System.in);
 		System.out.println("How many players? [1/8]");
 		int i = stdin.nextInt();
-		while(i != 1 && i > 9) {
-			System.out.println("How many players? [1/2]");
+		while(i > 8) {
+			
+			System.out.println("Please enter valid number of player. How many players? [1/8]");
 			i = stdin.nextInt();
 		}
+		System.out.println("First player has been selected to play");
 		PairOfDice pod = new PairOfDice();
 		player1 = new CurrentPlayer("Player 1", pod);
 		if(i == 2) {
