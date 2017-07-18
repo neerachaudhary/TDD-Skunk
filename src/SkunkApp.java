@@ -1,7 +1,6 @@
 
 import java.util.Scanner;
 
-
 public class SkunkApp {
 
 	private SkunkDomain p1;
@@ -10,21 +9,25 @@ public class SkunkApp {
 	
 	public SkunkApp() {
 		
-		ReadandReturnPrompt("How many players?");
-		//PairOfDice pod = new PairOfDice();
-		//p1 = new Player("Player 1", pod);
-	}
-	
-	public String ReadandReturnPrompt(String question)
-	{
-		System.out.println(question);
 		stdin = new Scanner(System.in);
-		String result = stdin.nextLine();
-		return result;
+		System.out.println("How many players? [1/8]");
+		int i = stdin.nextInt();
+		while(i != 1 && i > 9) {
+			System.out.println("How many players? [1/2]");
+			i = stdin.nextInt();
+		}
+		PairOfDice pod = new PairOfDice();
+		p1 = new CurrentPlayer("Player 1", pod);
+		if(i == 2) {
+			p2 = new CurrentPlayer("Player 2", pod);
+		} else {
+			p2 = new NextPlayer("Player 2", pod);
+		}
+		
 	}
-	
 	
 	public void play() {
+		
 		SkunkDomain curplayer = p1;
 		boolean result = false, again = false;
 		
